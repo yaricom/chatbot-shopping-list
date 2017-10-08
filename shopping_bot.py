@@ -3,12 +3,17 @@
 """
 Created on Sat Oct  7 22:52:04 2017
 
+The shopping bot main class which provides routines to maintain NLU model,
+parse user's intents and execute corresponding commands in response.
+
 @author: yaric
 """
 
 from rasa_nlu.converters import load_data
 from rasa_nlu.config import RasaNLUConfig
 from rasa_nlu.model import Trainer
+
+from intent import HelloIntent, AddItemsIntent, ClearListIntent, ShowItemsIntent, ShowStatsIntent
 
 class ShoppingBot(object):
     def __init__(self, training_data_file = "./data/shopping-list/rasa/shopping-list-small.json",
@@ -17,7 +22,16 @@ class ShoppingBot(object):
         
         trainer = Trainer(RasaNLUConfig(config_file))
         self.interpreter = trainer.train(training_data)
-        self.shopping_list = []
+        self.shopping_list = {}
+        
+        # Create supported intents
+        self.intents = {
+                "greet"     : HelloIntent(self, "greet"),
+                "add_item"  : AddItemsIntent(self, "add_item"),
+                "clear_list": ClearListIntent(self, "clear_list"),
+                "show_items": ShowItemsIntent(self, "show_items"),
+                "_num_items": ShowStatsIntent(self, "_num_items")
+            }
         
     
     def handle(self, message):
@@ -26,37 +40,15 @@ class ShoppingBot(object):
         the system out
         Arguments:
             message the message from user to be handled with known intents 
-            (greet, add_item, clear_list, _num_items)
+            (greet, add_item, clear_list, show_items, _num_items)
         """
         if message == '_num_items':
-            print(len(self.shopping_list))
+            self.intents['_num_items'].execute(None)
         else:
-            res = self.interpreter.parse(message)
-            intent = res['intent']['name']
-            if res['intent']['confidence'] < .8:
-                print('I\'m sorry! Could you please paraphrase!')
-                return
-            
-            if intent == 'add_item':
-                self.addItems(res['entities'])
-            elif intent == 'clear_list':
-                self.shopping_list.clear()
-            elif intent == 'greet':
-                print('Hello!')
-            else:
-                print('I\'m sorry! Could you please paraphrase!')
+            nlu_data = self.interpreter.parse(message)
+            intent = nlu_data['intent']['name']
+            if self.intents[intent] is not None:
+                self.intents[intent].execute(nlu_data)
         
-            print(out)
 
-    def addItems(self, entities):
-        for entity in entities:
-                    size = len(self.shopping_list)
-                    if self.shopping_list.count(entity['value']) == 0:
-                        self.shopping_list.append(entity['value'])
-                if len(self.shopping_list) == size:
-                    print('You already have this item in your list')
-                else:
-                    print(self.shopping_list)
-        
-    def clearList(self):
         
