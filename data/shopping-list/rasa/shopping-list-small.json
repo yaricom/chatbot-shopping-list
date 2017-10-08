@@ -44,30 +44,6 @@
         ]
       },
       {
-        "text": "add eggs to the list",
-        "intent": "add_item",
-        "entities": [
-          {
-            "start": 4,
-            "end": 8,
-            "value": "eggs",
-            "entity": "shopping_item"
-          }
-        ]
-      },
-      {
-        "text": "i also need eggs",
-        "intent": "add_item",
-        "entities": [
-          {
-            "start": 12,
-            "end": 16,
-            "value": "eggs",
-            "entity": "shopping_item"
-          }
-        ]
-      },
-      {
         "text": "need eggs to buy",
         "intent": "add_item",
         "entities": [
@@ -104,7 +80,7 @@
         ]
       },
       {
-        "text": "add butter to the list",
+        "text": "add butter",
         "intent": "add_item",
         "entities": [
           {
