@@ -1,9 +1,10 @@
 This is simple chatbot application with Natural Language Understanding to maintain very simple shopping list. It's built using [RASA NLU][rasa_nlu_home] Python library with [Spacy NLP][spacy_nlp_home] backend.
-The bot which we will create assumes that anything our bot’s users say can be categorized into one of the following intents:
+The bot which we will create assumes that anything our bot's users say can be categorized into one of the following intents:
 1. Greetings (**greet**)
 2. Adding item to the shopping list (**add_item**)
 3. Removing all items from shopping list (**clear_list**)
-4. The debug command to return number of items in the list (**_num_items**) 
+4. Displaying shopping list (**show_items**) 
+5. The debug command to return number of items in the list (**_num_items**) 
 
 ## System Requirements ##
 As it was already mentined we are going to use RASA NLU and Spacy NLP Python libraries which should be installed.
@@ -49,21 +50,48 @@ The training data includes extremelly limited knowledge of grocery items to be p
 
 The chatbot can be used as following:
 ```python
-bot = ShoppingBot()
-...
-bot.handle("Hello")                   # bot will greet the user
-...
-bot.handle("add milk to the list")    # bot will add milk to the list AND print the whole list
-...
-bot.handle("i also need eggs")        # bot will add eggs to the list AND print the whole list
-...
-bot.handle("_num_items")              # bot will print 2
-...
-bot.handle("clear my list")           # bot will clear the shopping list and affirm that
-...
-bot.handle("_num_items")              # bot will print 0
+In [1]: from shopping_bot import ShoppingBot
 
+In [2]: bot = ShoppingBot()
+
+In [3]: bot.handle("Hello")
+How are you!
+
+In [4]: bot.handle("add milk")
+Shopping list items:
+milk - quantity: 1
+
+In [5]: bot.handle("i need eggs")
+Shopping list items:
+milk - quantity: 1
+eggs - quantity: 1
+
+In [6]: bot.handle("i need eggs and milk")
+Shopping list items:
+milk - quantity: 2
+eggs - quantity: 2
+
+In [7]: bot.handle("my list")
+Shopping list items:
+milk - quantity: 2
+eggs - quantity: 2
+
+In [8]: bot.handle("_num_items")
+# of unique items: 2, total # of items: 4
+
+In [9]: bot.handle("clear list")
+Items removed from your list!
+Your shopping list is empty!
+
+In [10]: bot.handle("_num_items")
+shopping list is empty
+# of unique items: 0, total # of items: 0
 ```
+
+The supported grocery items:
+* eggs
+* milk
+* butter
 
 [rasa_nlu_home]:https://rasa-nlu.readthedocs.io/en/stable/
 [spacy_nlp_home]:https://spacy.io
