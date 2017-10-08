@@ -61,16 +61,8 @@ class AddItemsIntent(Intent):
         self.commands[1].do(self.chatbot, None)
         
 class HelloIntent(Intent):
-    
     def initCommands(self):
         self.commands.append(GreetCommand())
-        
-    def execute(self, nlu_data):
-        """
-        Executes given intent by applying appropriate command to the given
-        parsed NLU data response
-        """
-        self.commands[0].do(self.chatbot, None)
     
 class ShowItemsIntent(Intent):
     def initCommands(self):
