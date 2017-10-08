@@ -164,6 +164,67 @@
             "entity": "shopping_item"
           }
         ]
+      },
+      {
+        "text": "put more eggs",
+        "intent": "add_item",
+        "entities": [
+          {
+            "start": 9,
+            "end": 13,
+            "value": "eggs",
+            "entity": "shopping_item"
+          }
+        ]
+      },
+      {
+        "text": "add more eggs",
+        "intent": "add_item",
+        "entities": [
+          {
+            "start": 9,
+            "end": 13,
+            "value": "eggs",
+            "entity": "shopping_item"
+          }
+        ]
+      },
+      {
+        "text": "i need more milk",
+        "intent": "add_item",
+        "entities": [
+          {
+            "start": 12,
+            "end": 16,
+            "value": "milk",
+            "entity": "shopping_item"
+          }
+        ]
+      },
+      {
+        "text": "show my list",
+        "intent": "show_items",
+        "entities": []
+      },
+      {
+        "text": "check list",
+        "intent": "show_items",
+        "entities": []
+      },
+      {
+        "text": "display list",
+        "intent": "show_items",
+        "entities": []
+      },
+      {
+        "text": "my shopping list",
+        "intent": "show_items",
+        "entities": []
+      },
+      {
+        "text": "shopping list",
+        "intent": "",
+        "entities": []
       }
     ]
   }
