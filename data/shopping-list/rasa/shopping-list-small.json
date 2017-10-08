@@ -223,7 +223,7 @@
       },
       {
         "text": "shopping list",
-        "intent": "",
+        "intent": "show_items",
         "entities": []
       }
     ]
