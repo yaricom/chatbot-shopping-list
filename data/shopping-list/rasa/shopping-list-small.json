@@ -1,0 +1,170 @@
+﻿{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "text": "hey",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "howdy",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "hey there",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "hello",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "hi",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "hallo",
+        "intent": "greet",
+        "entities": []
+      },
+      {
+        "text": "add eggs",
+        "intent": "add_item",
+        "entities": [
+          {
+            "start": 4,
+            "end": 8,
+            "value": "eggs",
+            "entity": "shopping_item"
+          }
+        ]
+      },
+      {
+        "text": "add eggs to the list",
+        "intent": "add_item",
+        "entities": [
+          {
+            "start": 4,
+            "end": 8,
+            "value": "eggs",
+            "entity": "shopping_item"
+          }
+        ]
+      },
+      {
+        "text": "i also need eggs",
+        "intent": "add_item",
+        "entities": [
+          {
+            "start": 12,
+            "end": 16,
+            "value": "eggs",
+            "entity": "shopping_item"
+          }
+        ]
+      },
+      {
+        "text": "need eggs to buy",
+        "intent": "add_item",
+        "entities": [
+          {
+            "start": 5,
+            "end": 9,
+            "value": "eggs",
+            "entity": "shopping_item"
+          }
+        ]
+      },
+      {
+        "text": "add milk",
+        "intent": "add_item",
+        "entities": [
+          {
+            "start": 4,
+            "end": 8,
+            "value": "milk",
+            "entity": "shopping_item"
+          }
+        ]
+      },
+      {
+        "text": "need some milk",
+        "intent": "add_item",
+        "entities": [
+          {
+            "start": 10,
+            "end": 14,
+            "value": "milk",
+            "entity": "shopping_item"
+          }
+        ]
+      },
+      {
+        "text": "add butter to the list",
+        "intent": "add_item",
+        "entities": [
+          {
+            "start": 4,
+            "end": 10,
+            "value": "butter",
+            "entity": "shopping_item"
+          }
+        ]
+      },
+      {
+        "text": "and butter please",
+        "intent": "add_item",
+        "entities": [
+          {
+            "start": 4,
+            "end": 10,
+            "value": "butter",
+            "entity": "shopping_item"
+          }
+        ]
+      },
+      {
+        "text": "clear list",
+        "intent": "clear_list",
+        "entities": []
+      },
+      {
+        "text": "clear my list",
+        "intent": "clear_list",
+        "entities": []
+      },
+      {
+        "text": "remove all items",
+        "intent": "clear_list",
+        "entities": []
+      },
+      {
+        "text": "delete all from list",
+        "intent": "clear_list",
+        "entities": []
+      },
+      {
+        "text": "i need eggs and milk",
+        "intent": "add_item",
+        "entities": [
+          {
+            "start": 7,
+            "end": 11,
+            "value": "eggs",
+            "entity": "shopping_item"
+          },
+          {
+            "start": 16,
+            "end": 20,
+            "value": "milk",
+            "entity": "shopping_item"
+          }
+        ]
+      }
+    ]
+  }
+}
