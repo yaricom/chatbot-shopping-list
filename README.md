@@ -24,6 +24,11 @@ We will use English language Spacy model which can be installed as following:
 python -m spacy download en
 ```
 
+Also please make sure that sklearn_crfsuite installed on the system or install it:
+```python
+pip install sklearn_crfsuite
+```
+
 ## Preparing the Training Data ##
 To build NLU model able to parse user's intents first we need to create appropriate training data which will allow our chatbot to interpret user's inputs and created structured data (intent/entities). The best way to get training texts is from real users, and the best way to get the structured data is to pretend to be the bot yourself. For the purpose of this experiment we will create small training data corpus in format described at: https://rasa-nlu.readthedocs.io/en/stable/dataformat.html
 
