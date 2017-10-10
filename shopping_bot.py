@@ -25,12 +25,13 @@ class ShoppingBot(object):
         self.shopping_list = {}
         
         # Create supported intents
+        context = {'confidence_threshold':0.8}
         self.intents = {
-                "greet"     : HelloIntent(self, "greet"),
-                "add_item"  : AddItemsIntent(self, "add_item"),
-                "clear_list": ClearListIntent(self, "clear_list"),
-                "show_items": ShowItemsIntent(self, "show_items"),
-                "_num_items": ShowStatsIntent(self, "_num_items")
+                "greet"     : HelloIntent(self, "greet", context),
+                "add_item"  : AddItemsIntent(self, "add_item", context),
+                "clear_list": ClearListIntent(self, "clear_list", context),
+                "show_items": ShowItemsIntent(self, "show_items", context),
+                "_num_items": ShowStatsIntent(self, "_num_items", context)
             }
         
     

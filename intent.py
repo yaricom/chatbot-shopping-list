@@ -14,15 +14,17 @@ from command import GreetCommand, AddItemCommand, ShowItemsCommand, ClearListCom
 
 class Intent(object):
     
-    def __init__(self, bot, intent_name):
+    def __init__(self, bot, intent_name, context):
         """
         Creates new intent for specified chatbot with given name
         Arguments:
             bot the chatbot
             name the intent name
+            context the execution context holding configuration parameters
         """
         self.chatbot = bot
         self.name = intent_name
+        self.context = context
         self.commands = []
         self.initCommands()
         
@@ -43,13 +45,13 @@ class Intent(object):
 class AddItemsIntent(Intent):
     
     def initCommands(self):
-        self.confidence_threshold = 0.8
         self.commands.append(AddItemCommand())
         self.commands.append(ShowItemsCommand())
     
     def execute(self, data):
         confidence = data['intent']['confidence']
-        if confidence < self.confidence_threshold:
+        confidence_threshold = self.context['confidence_threshold']
+        if confidence < confidence_threshold:
             print('I\'m sorry! Could you please paraphrase!')
             return
         
